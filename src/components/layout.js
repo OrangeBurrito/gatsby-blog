@@ -1,53 +1,30 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
+import { useStaticQuery, graphql } from 'gatsby'
+import React from 'react'
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import Header from '../components/header'
 
-import Header from "./header"
-import "./layout.css"
+import '../style.css'
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
+export default function Layout(props) {
+	return (
+		<div className="wrap">
+			<Header headerText={props.title}/>
+			<main>{props.children}</main>
+			<footer className="box">Copyright © OrangeBurrito {new Date().getFullYear()}</footer>
+		</div>
+	)
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+{/* <p align="center">
+  <a href="orangeburrito.com/blog">
+    <img alt="Paper with a blue pin attached to it" src="https://64.media.tumblr.com/361830e653b4ddcbf7b0a28c649a0a41/tumblr_pwtpbtqnKN1tsxrbyo1_400.png" width="60"/>
+  </a>
+</p>
+<h1 align="center">
+  OrangeBurrito's Blog
+</h1>
 
-export default Layout
+This is my blog site repo. (still a work-in-progress)
+I write about whatever comes to mind
+
+[_Visit my blog here!_](orangeburrito.com/blog) */}
