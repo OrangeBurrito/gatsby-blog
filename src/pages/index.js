@@ -2,39 +2,37 @@ import React from 'react'
 import {Link, graphql} from 'gatsby'
 
 import Layout from "../components/layout"
-import {useSiteMetadata} from '../hooks/useSiteMetadata'
-
-export const query = graphql`
-query indexQuery {
-  allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
-    nodes {
-      id
-      excerpt(pruneLength: 150)
-      frontmatter {
-        title
-        date
-      }
-    }
-  }
-}
-`
-
 
 export default function IndexPage({data}) {
-	const {title, description} = useSiteMetadata()
 	return (
 		<Layout title="Home">
-			<pre>index.js</pre>
 			<img src="https://source.unsplash.com/random/400x300" alt="" />
-
-			{data.allMdx.nodes.map(({excerpt, frontmatter}) => (
-				<Link to="">
-					<h1>{frontmatter.title}</h1>
-					<pre>{frontmatter.date}</pre>
-					<p>{excerpt}</p>
-				</Link>
+			{data.allMdx.nodes.map(({id, excerpt, frontmatter, fields }) => (
+				<div key={id}>
+					<Link to={fields.slug}>
+						<h1>{frontmatter.title}</h1>
+						<p>{frontmatter.date}</p>
+						<p>{excerpt}</p>
+					</Link>
+				</div>
 			))}
-			
 		</Layout>
 	)
 }
+
+export const query = graphql`
+  query SITE_INDEX_QUERY {
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        id
+        excerpt(pruneLength: 250)
+        frontmatter {
+          title
+          date
+        }
+      }
+    }
+  }
+`;
