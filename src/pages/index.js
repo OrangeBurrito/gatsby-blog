@@ -31,7 +31,10 @@ export const query = graphql`
         frontmatter {
           title
           date
-        }
+				}
+				fields {
+					slug
+				}
       }
     }
   }
