@@ -7,8 +7,8 @@ import Layout from "../components/layout"
 export default function IndexPage() {
 	return (
 		<Layout title="Home">
-			<h1>Heyay</h1>
-			<img src="https://source.unsplash.com/random/400x200" alt="" />
+			<pre>index.js</pre>
+			<img src="https://source.unsplash.com/random/400x300" alt="" />
 		</Layout>
 	)
 }
