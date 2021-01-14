@@ -5,13 +5,19 @@ module.exports = {
     author: `OrangeBurrito`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+			resolve: `gatsby-plugin-mdx`,
+			options: {
+				extensions: [`.mdx`, `.md`],
+			},
+		},
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+				path: `${__dirname}/src/posts`,
+				name: `posts`,
       },
-    },
+		},
+		`gatsby-plugin-react-helmet`
   ]
 }

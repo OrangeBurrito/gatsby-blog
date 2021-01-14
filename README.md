@@ -7,5 +7,4 @@
   OrangeBurrito's Blog
 </h1>
 
-This is my blog site repo. (still a WIP)
-I write about whatever comes to mind.
+<p align="center">This is my blog site repo. (still a WIP)<br>I write about whatever comes to mind.</p>
