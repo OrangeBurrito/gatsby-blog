@@ -1,28 +1,40 @@
-import React from "react"
-import {Link} from 'gatsby'
+import React from 'react'
+import {Link, graphql} from 'gatsby'
 
-import Header from '../components/header'
 import Layout from "../components/layout"
+import {useSiteMetadata} from '../hooks/useSiteMetadata'
 
-export default function IndexPage() {
+export const query = graphql`
+query indexQuery {
+  allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
+    nodes {
+      id
+      excerpt(pruneLength: 150)
+      frontmatter {
+        title
+        date
+      }
+    }
+  }
+}
+`
+
+
+export default function IndexPage({data}) {
+	const {title, description} = useSiteMetadata()
 	return (
 		<Layout title="Home">
 			<pre>index.js</pre>
 			<img src="https://source.unsplash.com/random/400x300" alt="" />
+
+			{data.allMdx.nodes.map(({excerpt, frontmatter}) => (
+				<Link to="">
+					<h1>{frontmatter.title}</h1>
+					<pre>{frontmatter.date}</pre>
+					<p>{excerpt}</p>
+				</Link>
+			))}
+			
 		</Layout>
 	)
 }
-
-// const IndexPage = () => (
-//   <Layout>
-//     <SEO title="Home" />
-//     <h1>Hi people</h1>
-//     <p>Welcome to your new Gatsby site.</p>
-//     <p>Now go build something great.</p>
-//     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-//       <Image />
-//     </div>
-//     <Link to="/page-2/">Go to page 2</Link> <br />
-//     <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-//   </Layout>
-// )

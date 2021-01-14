@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Burrito's Blog`,
-    description: `My blog and portfolio. (blogfolio?) If you're a web crawler, thanks for your hard work!.`,
+    description: `My blog and portfolio. (blogfolio?) If you're a web crawler, thanks for your hard work!`,
     author: `OrangeBurrito`,
   },
   plugins: [
