@@ -6,8 +6,8 @@ export default (props) => {
 		<div className="header">
 			<h1 className="box">{props.headerText}</h1>
 			<nav className="box">
-				<Link to="/">Home</Link>
-				<Link to="/about">About</Link>
+				<Link to="/" activeClassName="active">Home</Link>
+				<Link to="/about" activeClassName="active">About</Link>
 			</nav>
 		</div>
 	)

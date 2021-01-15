@@ -9,7 +9,6 @@
     "@mdx-js/react": "^1.6.22",
     "env-cmd": "^10.1.0",
     "gatsby": "^2.26.1",
-    "gatsby-image": "^2.5.0",
     "gatsby-plugin-mdx": "^1.8.0",
     "gatsby-plugin-react-helmet": "^3.4.0",
     "gatsby-source-filesystem": "^2.9.0",

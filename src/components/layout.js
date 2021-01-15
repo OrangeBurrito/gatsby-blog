@@ -1,9 +1,6 @@
-import { useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
 
 import Header from '../components/header'
-
-import '../style.css'
 
 export default function Layout(props) {
 	return (

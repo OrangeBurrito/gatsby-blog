@@ -6,16 +6,20 @@ import Layout from "../components/layout"
 export default function IndexPage({data}) {
 	return (
 		<Layout title="Home">
-			<img src="https://source.unsplash.com/random/400x300" alt="" />
-			{data.allMdx.nodes.map(({id, excerpt, frontmatter, fields }) => (
-				<div key={id}>
-					<Link to={fields.slug}>
-						<h1>{frontmatter.title}</h1>
-						<p>{frontmatter.date}</p>
-						<p>{excerpt}</p>
-					</Link>
-				</div>
-			))}
+			<div class="index-wrap">
+
+				<img src={require('../images/plant-background.png')}></img>
+				{/* <img src="../images/plant-background.png" alt="plent" /> */}
+				{data.allMdx.nodes.map(({id, excerpt, frontmatter, fields }) => (
+					<div key={id}>
+						<Link to={fields.slug}>
+							<h1>{frontmatter.title}</h1>
+							<p>{frontmatter.date}</p>
+							<p>{excerpt}</p>
+						</Link>
+					</div>
+				))}
+			</div>
 		</Layout>
 	)
 }

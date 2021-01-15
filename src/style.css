@@ -43,3 +43,20 @@ body {
 a {
 	color: #eee;
 }
+
+.active {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+img {
+	height: 400px;
+	width: auto;
+}
+
+.index-wrap {
+	display: grid;
+	grid-gap: 0.6rem;
+	grid-template-columns: 1fr 1fr;
+}
+
