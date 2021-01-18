@@ -29,10 +29,6 @@ body {
 	.header, .index-wrap {
 		grid-template-columns: 1fr 1fr;
 	}
-
-	.index-wrap > h1 {
-		border-bottom: none;
-	}
 }
 
 .header nav, .header h1, footer {
@@ -84,7 +80,6 @@ img {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-bottom: 2px solid #fff;
 }
 
 .posts-aside, .about-wrap {
