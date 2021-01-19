@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Heebo:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Heebo:wght@800&family=Fira+Code&family=PT+Serif&display=swap');
 
 * {
 	margin: 0;
@@ -10,6 +10,8 @@ body {
 	font-family: 'Source Sans Pro', arial;
 	background: #384357;
 	color: #eee;
+	height: 100%;
+	width: 100%;
 }
 
 .wrap {
@@ -17,6 +19,7 @@ body {
 	display: grid;
 	grid-template-rows: 100px 1fr 60px;
 	grid-gap: 0.6rem;
+	border-radius: 5px;
 	padding: 0.6rem;
 }
 
@@ -105,4 +108,48 @@ img {
 
 .bold-h1 {
 	font-family: 'Heebo';
+}
+
+.blogpost-wrap {
+	display: grid;
+	grid-template-rows: 550px 100px;
+}
+
+.blogpost-content {
+	overflow: scroll;
+}
+
+.blogpost-wrap p, .blogpost-wrap li {
+	padding: 0.3rem;
+}
+
+.blogpost-wrap ul  {
+	padding-left: 1.5rem;
+}
+
+div {
+	font-size: 1.2rem;
+}
+
+img {
+	padding: 1rem 0;
+}
+
+.post-title {
+	font-size: 3rem;
+	font-family: 'PT Serif';
+}
+
+.post-navigation {
+	display: flex;
+	align-items: center;
+	gap: 2.5rem;
+}
+
+.post-navigation > * {
+	padding: 0.5rem 1rem;
+}
+
+.post-navigation h3 {
+	font-weight: lighter;
 }

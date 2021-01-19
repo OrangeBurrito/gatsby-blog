@@ -1,8 +1,8 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require(`path`)
 
-exports.createPages = ({actions, graphql}) => {
-	const {createPage} = actions
+exports.createPages = ({ actions, graphql }) => {
+	const { createPage } = actions
 	const blogPostTemplate = path.resolve('src/templates/blogpost.js')
 
 	return graphql(`
@@ -25,12 +25,18 @@ exports.createPages = ({actions, graphql}) => {
 
 		const posts = result.data.allMdx.nodes
 
-		posts.forEach(post => {
+		posts.forEach((post, index) => {
+			const previous =
+    index === posts.length - 1 ? null : posts[index + 1];
+  const next = index === 0 ? null : posts[index - 1];
+
 			createPage({
 				path: post.fields.slug,
 				component: blogPostTemplate,
 				context: {
-					slug: post.fields.slug
+					slug: post.fields.slug,
+					previous,
+					next,
 				}
 			})
 		})
@@ -38,13 +44,13 @@ exports.createPages = ({actions, graphql}) => {
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    });
-  }
+	const { createNodeField } = actions;
+	if (node.internal.type === `Mdx`) {
+		const value = createFilePath({ node, getNode });
+		createNodeField({
+			name: `slug`,
+			node,
+			value,
+		});
+	}
 };

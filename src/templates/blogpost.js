@@ -1,7 +1,8 @@
 import React from 'react'
-import {graphql} from 'gatsby'
+import {graphql, Link} from 'gatsby'
 import {MDXRenderer} from 'gatsby-plugin-mdx'
 
+import Dump from '../components/Dump'
 import Layout from '../components/layout'
 
 export const query = graphql `
@@ -10,19 +11,47 @@ query PostBySlug($slug: String!) {
 		body
     frontmatter {
       title
-      date(formatString: "YYYY MMMM Do")
+      date(formatString: "MMMM Do YYYY")
     }
   }
 }
 `
 
-export default ({data}) => {
+export default ({data, pageContext}) => {
 	const {frontmatter, body} = data.mdx
+	const {previous, next} = pageContext
 	return (
-		<Layout>
-			<h1>{frontmatter.title}</h1>
-			<p style={{borderBottom: '2px solid #fff'}}>{frontmatter.date}</p>
-			<MDXRenderer>{body}</MDXRenderer>
+		<Layout title={frontmatter.title}>
+			<div className="blogpost-wrap">
+				<div className="blogpost-content">
+					<h1 className="post-title">{frontmatter.title}</h1>
+					<p style={{fontFamily: 'Fira Code'}}>{frontmatter.date}</p>
+					<MDXRenderer>{body}</MDXRenderer>
+				</div>
+
+			<div className="post-navigation">
+			{previous === false ? null : (
+        <>
+          {previous && (
+            <Link to={previous.fields.slug} className="box">
+							<h3>Previous</h3>
+              <h2>{previous.frontmatter.title}</h2>
+            </Link>
+          )}
+        </>
+      )}
+      {next === false ? null : (
+        <>
+          {next && (
+            <Link to={next.fields.slug} className="box">
+							<h3>Next</h3>
+              <h2>{next.frontmatter.title}</h2>
+            </Link>
+          )}
+        </>
+      )}
+			</div>
+		</div>
 		</Layout>
 	)
 }

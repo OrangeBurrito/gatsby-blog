@@ -7,7 +7,7 @@ export default function IndexPage({data}) {
 	return (
 		<Layout title="Home">
 			<div class="index-wrap">
-				<h1 className="bold-h1">The shit blog</h1>
+				<h1 className="bold-h1">OrangeBurrito's Blog</h1>
 
 				<div className="posts-aside">
 				{data.allMdx.nodes.map(({id, excerpt, frontmatter, fields }) => (
@@ -33,10 +33,10 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 250)
+        excerpt(pruneLength: 100)
         frontmatter {
           title
-          date(formatString: "YYYY MMMM Do")
+          date(formatString: "MMMM Do YYYY")
 				}
 				fields {
 					slug

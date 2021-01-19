@@ -13,7 +13,7 @@ export default function Layout(props) {
 }
 
 {/* <p align="center">
-  <a href="orangeburrito.com/blog">
+  <a href="orangeburrito.com/ g">
     <img alt="Paper with a blue pin attached to it" src="https://64.media.tumblr.com/361830e653b4ddcbf7b0a28c649a0a41/tumblr_pwtpbtqnKN1tsxrbyo1_400.png" width="60"/>
   </a>
 </p>
