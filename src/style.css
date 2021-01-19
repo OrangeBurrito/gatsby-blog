@@ -111,11 +111,14 @@ img {
 }
 
 .blogpost-wrap {
+	height: 76vh;
 	display: grid;
-	grid-template-rows: 550px 100px;
+	grid-template-rows: 85% 15%;
+	grid-gap: 0.2rem;
 }
 
 .blogpost-content {
+	height: 100%;
 	overflow: scroll;
 }
 

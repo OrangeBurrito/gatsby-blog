@@ -5,6 +5,7 @@ exports.createPages = ({ actions, graphql }) => {
 	const { createPage } = actions
 	const blogPostTemplate = path.resolve('src/templates/blogpost.js')
 
+	// (sort: {fields: [frontmatter___date], order: DESC})
 	return graphql(`
 	{
 		allMdx {
@@ -26,9 +27,12 @@ exports.createPages = ({ actions, graphql }) => {
 		const posts = result.data.allMdx.nodes
 
 		posts.forEach((post, index) => {
-			const previous =
-    index === posts.length - 1 ? null : posts[index + 1];
-  const next = index === 0 ? null : posts[index - 1];
+
+	// 		const previous = index === posts.length - 1 ? null : posts[index + 1];
+	// const next = index === 0 ? null : posts[index - 1];
+	
+			const	previous = index === 0 ? null : posts[index - 1]
+			const next = index === posts.length - 1 ? null : posts[index + 1]
 
 			createPage({
 				path: post.fields.slug,

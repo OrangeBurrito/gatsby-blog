@@ -9,6 +9,22 @@ module.exports = {
 			resolve: `gatsby-plugin-mdx`,
 			options: {
 				extensions: [`.mdx`, `.md`],
+				gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+					},
+				],
+				plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
 			},
 		},
     {
@@ -18,6 +34,8 @@ module.exports = {
 				path: `${__dirname}/src/posts`,
       },
 		},
+		`gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
 		`gatsby-plugin-react-helmet`,
   ]
 }
