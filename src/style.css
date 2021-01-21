@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Sans+Pro&family=Fira+Code&family=PT+Serif&display=swap');
 
 :root {
-	--main-bg:#384357;
-	--wrap-bg: #2A3547;
-	--default-text: #eee;
-	--darker-text: #BABABA;
-	--link-hover: #B1F1FA;
+	--main-bg:#3b4252;
+	/* --main-bg:#384357; */
+	--wrap-bg: #2e3440;
+	/* --wrap-bg: #2A3547; */
+	--default-text: #eceff4;
+	--darker-text: #d8dee9;
+	--link-hover: #88c0d0;
 	--white: #fff;
 }
 
@@ -20,14 +22,15 @@ body {
 	letter-spacing: 0.2px;
 	background: var(--main-bg);
 	color: var(--default-text);
-	height: 100%;
-	width: 100%;
+	font-size: 1.5rem;
+	/* height: 100%; */
+	/* width: 100%; */
 }
 
 .wrap {
-	height: 100vh;
+ 	height: 100vh;
 	display: grid;
-	grid-template-rows: 100px 1fr 60px;
+	grid-template-rows: 12% calc(80% - 0.6rem) calc(8% - 0.6rem);
 	grid-gap: 0.6rem;
 	padding: 0.6rem;
 }
@@ -47,11 +50,17 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 }
 
 .header nav a {
 	font-size: 1.5rem;
 	margin: 0rem 2rem;
+}
+
+.header nav a:hover {
+	border-bottom: 2px solid var(--link-hover);
+	color: var(--link-hover);
 }
 
 .box {
@@ -62,11 +71,6 @@ body {
 a {
 	color: var(--default-text);
 	text-decoration: none;
-}
-
-a:hover {
-	border-bottom: 2px solid var(--link-hover);
-	color: var(--link-hover);
 }
 
 .active {
@@ -100,6 +104,10 @@ img {
 	align-content: center;
 }
 
+.posts-aside {
+	overflow: scroll;
+}
+
 .posts-aside a {
 	padding: 1rem;
 	display: grid;
@@ -117,7 +125,7 @@ img {
 
 .blogpost-wrap {
 	height: 76vh;
-	max-width: 65vw;
+	max-width: 70vw;
 	overflow: scroll;
 	margin: 0 auto;
 }
@@ -134,9 +142,9 @@ img {
 	padding-left: 1.5rem;
 }
 
-.blogpost-wrap p, .blogpost-wrap li, .blogpost-wrap div, footer {
-	font-size: 1.5rem;
-}
+/* .blogpost-wrap p, .blogpost-wrap li, .blogpost-wrap div {
+	
+} */
 
 .blogpost-header {
 	display: grid;
@@ -162,6 +170,13 @@ img {
 
 .post-navigation > * {
 	padding: 0.5rem 1rem;
+	color: var(--darker-text);
+}
+
+.post-navigation > *:hover {
+	color: var(--white);
+	background: var(--main-bg);
+	border-bottom: 4px solid var(--link-hover);
 }
 
 .post-navigation h3 {
@@ -183,4 +198,10 @@ pre {
 
 code {
 	font-family: 'Fira Code';
+}
+
+span {
+	display: inline-block;
+	height: 48px;
+	width: 48px;
 }

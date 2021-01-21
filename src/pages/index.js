@@ -11,13 +11,12 @@ export default function IndexPage({data}) {
 
 				<div className="posts-aside">
 				{data.allMdx.nodes.map(({id, excerpt, frontmatter, fields }) => (
-					// <div key={id}>
-						<Link to={fields.slug}>
-							<h1>{frontmatter.title}</h1>
-							<p>{frontmatter.date}</p>
-							<p>{excerpt}</p>
-						</Link>
-					// </div>
+					<Link to={fields.slug}>
+						<img src="https://miro.medium.com/max/1400/1*fOXGcnp7tijvykETkkBxhw.jpeg"></img>
+						<h1>{frontmatter.title}</h1>
+						<p>{frontmatter.date}</p>
+						<p>{excerpt}</p>
+					</Link>
 				))}
 				</div>
 
