@@ -1,41 +1,55 @@
 module.exports = {
-  siteMetadata: {
-    title: `Burrito's Blog`,
-    description: `My blog and portfolio. (blogfolio?) If you're a web crawler, thanks for your hard work!`,
-    author: `OrangeBurrito`,
-  },
-  plugins: [
-    {
+	siteMetadata: {
+		title: `Burrito's Blog`,
+		description: `My blog and portfolio. (blogfolio?) If you're a web crawler, thanks for your hard work!`,
+		author: `OrangeBurrito`,
+	},
+	plugins: [
+		`gatsby-plugin-react-helmet`,
+		`gatsby-transformer-sharp`,
+		`gatsby-plugin-sharp`,
+		{
 			resolve: `gatsby-plugin-mdx`,
 			options: {
 				extensions: [`.mdx`, `.md`],
 				gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
+					{
+						resolve: `gatsby-remark-images`,
+						options: {
+							maxWidth: 590,
+						},
 					},
 				],
 				plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-        ],
+					{
+						resolve: `gatsby-remark-images`,
+						options: {
+							maxWidth: 590,
+						},
+					},
+				],
 			},
 		},
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
 				name: `posts`,
 				path: `${__dirname}/src/posts`,
-      },
+			},
 		},
-		`gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-		`gatsby-plugin-react-helmet`,
-  ]
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [
+				{
+					resolve: "gatsby-remark-external-links",
+					options: {
+						target: "_self",
+						rel: "nofollow"
+					}
+				}
+				]
+			}
+		},
+	]
 }

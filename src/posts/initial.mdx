@@ -7,4 +7,20 @@ date: 2021-01-15
 the text
 > blockquote
 
+### My MDX Query
+```
+{
+		allMdx {
+			nodes {
+				fields {
+					slug
+				}
+				frontmatter {
+					title
+				}
+			}
+		}
+	}
+```
+
 <div style={{color: 'salmon'}}>I'm the color of rouge</div>

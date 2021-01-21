@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Heebo:wght@800&family=Fira+Code&family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Sans+Pro&family=Fira+Code&family=PT+Serif&display=swap');
+
+:root {
+	--main-bg:#384357;
+	--wrap-bg: #2A3547;
+	--default-text: #eee;
+	--darker-text: #BABABA;
+	--link-hover: #B1F1FA;
+	--white: #fff;
+}
 
 * {
 	margin: 0;
@@ -7,9 +16,10 @@
 }
 
 body {
-	font-family: 'Source Sans Pro', arial;
-	background: #384357;
-	color: #eee;
+	font-family: 'Open Sans', arial;
+	letter-spacing: 0.2px;
+	background: var(--main-bg);
+	color: var(--default-text);
 	height: 100%;
 	width: 100%;
 }
@@ -19,7 +29,6 @@ body {
 	display: grid;
 	grid-template-rows: 100px 1fr 60px;
 	grid-gap: 0.6rem;
-	border-radius: 5px;
 	padding: 0.6rem;
 }
 
@@ -46,23 +55,23 @@ body {
 }
 
 .box {
-	background: #2A3547;
+	background: var(--wrap-bg);
 	border-radius: 5px;
 }
 
 a {
-	color: #eee;
+	color: var(--default-text);
 	text-decoration: none;
 }
 
 a:hover {
-	border-bottom: 2px solid #B1F1FA;
-	color: #B1F1FA;
+	border-bottom: 2px solid var(--link-hover);
+	color: var(--link-hover);
 }
 
 .active {
 	font-weight: bold;
-	border-bottom: 2px solid #eee;
+	border-bottom: 2px solid var(--default-text);
 }
 
 img {
@@ -99,39 +108,39 @@ img {
 }
 
 .posts-aside a:hover {
-	border: 5px solid #fff;
+	border: 5px solid var(--white);
 }
 
 .about-wrap a {
 	font-size: 1.5rem;
 }
 
-.bold-h1 {
-	font-family: 'Heebo';
-}
-
 .blogpost-wrap {
 	height: 76vh;
-	display: grid;
-	grid-template-rows: 85% 15%;
-	grid-gap: 0.2rem;
-}
-
-.blogpost-content {
-	height: 100%;
+	max-width: 65vw;
 	overflow: scroll;
+	margin: 0 auto;
 }
 
 .blogpost-wrap p, .blogpost-wrap li {
 	padding: 0.3rem;
 }
 
+.blogpost-wrap > p {
+	padding-bottom: 1.5rem;
+}
+
 .blogpost-wrap ul  {
 	padding-left: 1.5rem;
 }
 
-div {
-	font-size: 1.2rem;
+.blogpost-wrap p, .blogpost-wrap li, .blogpost-wrap div, footer {
+	font-size: 1.5rem;
+}
+
+.blogpost-header {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
 img {
@@ -146,7 +155,9 @@ img {
 .post-navigation {
 	display: flex;
 	align-items: center;
-	gap: 2.5rem;
+	justify-content: flex-end;
+	gap: 1rem;
+	
 }
 
 .post-navigation > * {
@@ -154,5 +165,22 @@ img {
 }
 
 .post-navigation h3 {
+	font-size: 1.4rem;
 	font-weight: lighter;
+}
+
+.post-navigation h2 {
+	font-size: 1.6rem;
+}
+
+pre {
+	background-color: var(--wrap-bg);
+	color: var(--darker-text);
+	padding: 1rem;
+	margin: 1rem 0;
+	border-radius: 5px;
+}
+
+code {
+	font-family: 'Fira Code';
 }
