@@ -5,9 +5,22 @@ module.exports = {
 		author: `OrangeBurrito`,
 	},
 	plugins: [
-		`gatsby-plugin-react-helmet`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [
+				{
+					resolve: "gatsby-remark-external-links",
+					options: {
+						target: "_self",
+						rel: "nofollow"
+					}
+				}
+				]
+			}
+		},
 		{
 			resolve: `gatsby-plugin-mdx`,
 			options: {
@@ -37,19 +50,6 @@ module.exports = {
 				path: `${__dirname}/src/posts`,
 			},
 		},
-		{
-			resolve: `gatsby-transformer-remark`,
-			options: {
-				plugins: [
-				{
-					resolve: "gatsby-remark-external-links",
-					options: {
-						target: "_self",
-						rel: "nofollow"
-					}
-				}
-				]
-			}
-		},
+		`gatsby-plugin-react-helmet`,
 	]
 }

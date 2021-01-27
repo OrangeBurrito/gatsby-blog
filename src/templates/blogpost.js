@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import Dump from '../components/Dump'
 import Layout from '../components/layout'
 
 export const query = graphql`
@@ -21,12 +20,13 @@ export default ({ data, pageContext }) => {
 	const { frontmatter, body } = data.mdx
 	const { previous, next } = pageContext
 	return (
-		<Layout title={frontmatter.title}>
-			<div className="blogpost-wrap">
+		
+		<Layout title='Blog' headerStyle={{fontFamily: 'Special Elite', paddingTop: '10px'}} footerStyle={{display: 'none'}} wrapStyle={{gridTemplateRows: '12% calc(88% - 0.6rem)'}}>
+			<div className="blogpost-wrap" id="key">
 				<div className="blogpost-header">
 					<div className="blogpost-title">
 						<h1 className="post-title">{frontmatter.title}</h1>
-						<p style={{ fontFamily: 'Fira Code' }}>{frontmatter.date}</p>
+						<p className="post-date">{frontmatter.date}</p>
 					</div>
 					<div className="post-navigation">
 					{previous === false ? null : (
@@ -54,6 +54,7 @@ export default ({ data, pageContext }) => {
 
 				<MDXRenderer>{body}</MDXRenderer>
 			</div>
+			<footer className="box" style={{margin: '0.6rem 0', background: 'var(--wrap-bg-hover)'}}>Copyright © OrangeBurrito {new Date().getFullYear()}</footer>
 		</Layout>
 	)
 }

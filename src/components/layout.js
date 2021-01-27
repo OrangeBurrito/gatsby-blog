@@ -5,9 +5,9 @@ import Header from '../components/header'
 export default function Layout(props) {
 	return (
 		<div className="wrap">
-			<Header headerText={props.title}/>
+			<Header headerText={props.title} headerStyle={props.headerStyle}/>
 			<main>{props.children}</main>
-			<footer className="box">Copyright © OrangeBurrito {new Date().getFullYear()}</footer>
+			<footer className="box" style={props.footerStyle}>Copyright © OrangeBurrito {new Date().getFullYear()}</footer>
 		</div>
 	)
 }

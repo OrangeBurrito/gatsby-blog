@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Sans+Pro&family=Fira+Code&family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Special+Elite&family=Fira+Code&family=PT+Serif&display=swap');
 
 :root {
 	--main-bg:#3b4252;
-	/* --main-bg:#384357; */
 	--wrap-bg: #2e3440;
-	/* --wrap-bg: #2A3547; */
+	--wrap-bg-hover: #333A47;
 	--default-text: #eceff4;
 	--darker-text: #d8dee9;
+	--grayed-out-text: #5e6a82;
 	--link-hover: #88c0d0;
 	--white: #fff;
+	/* --main-bg:#384357; */
+	/* --wrap-bg: #2A3547; */
 }
 
 * {
@@ -22,9 +24,8 @@ body {
 	letter-spacing: 0.2px;
 	background: var(--main-bg);
 	color: var(--default-text);
-	font-size: 1.5rem;
-	/* height: 100%; */
-	/* width: 100%; */
+	font-size: 1.3rem;
+	line-height: 1.8;
 }
 
 .wrap {
@@ -40,17 +41,15 @@ body {
 	grid-gap: 0.6rem;
 }
 
-@media screen and (min-width: 550px) {
-	.header, .index-wrap {
-		grid-template-columns: 1fr 1fr;
-	}
-}
-
 .header nav, .header h1, footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+}
+
+.header h1 {
+	color: var(--grayed-out-text);
 }
 
 .header nav a {
@@ -61,6 +60,10 @@ body {
 .header nav a:hover {
 	border-bottom: 2px solid var(--link-hover);
 	color: var(--link-hover);
+}
+
+footer {
+	padding: 1rem;
 }
 
 .box {
@@ -78,45 +81,50 @@ a {
 	border-bottom: 2px solid var(--default-text);
 }
 
-img {
-	height: 400px;
-	width: auto;
-}
-
 .index-wrap {
 	display: grid;
 	grid-gap: 0.6rem;
+	justify-items: center;
 }
 
 .index-wrap, .about-wrap {
 	height: 100%;
 }
 
-.index-wrap > h1 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.posts-aside, .about-wrap {
+.about-wrap {
 	display: grid;
 	justify-items: center;
 	align-content: center;
 }
 
 .posts-aside {
-	overflow: scroll;
+	overflow: auto;
 }
 
-.posts-aside a {
-	padding: 1rem;
-	display: grid;
-	align-content: center;
-	justify-items: center;
+.post-card {
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	overflow: hidden;
+	/* text-align: center; */
+	padding-bottom: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	font-size: 1.1rem;
 }
 
-.posts-aside a:hover {
-	border: 5px solid var(--white);
+.post-card:hover {
+	background: var(--wrap-bg-hover);
+}
+
+.post-card img {
+	width: 100%;
+	height: auto;
+	/* border-radius: 5px; */
+}
+
+.post-card p, .post-card h1 {
+	padding: 0 1rem;
 }
 
 .about-wrap a {
@@ -124,10 +132,16 @@ img {
 }
 
 .blogpost-wrap {
-	height: 76vh;
-	max-width: 70vw;
-	overflow: scroll;
+	/* height: 100%; */
+	/* max-width: 70vw; */
+	max-width: 75ch;
+	overflow: auto;
 	margin: 0 auto;
+	scrollbar-width: none;
+}
+
+.blogpost-wrap::-webkit-scrollbar {
+	display: none;
 }
 
 .blogpost-wrap p, .blogpost-wrap li {
@@ -135,24 +149,19 @@ img {
 }
 
 .blogpost-wrap > p {
-	padding-bottom: 1.5rem;
+	padding-bottom: 2rem;
 }
 
 .blogpost-wrap ul  {
 	padding-left: 1.5rem;
 }
 
-/* .blogpost-wrap p, .blogpost-wrap li, .blogpost-wrap div {
-	
-} */
-
 .blogpost-header {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-}
-
-img {
-	padding: 1rem 0;
+	border-bottom: 2px solid var(--grayed-out-text);
+	padding: 0.8rem 0;
+	margin-bottom: 1rem;
 }
 
 .post-title {
@@ -160,12 +169,15 @@ img {
 	font-family: 'PT Serif';
 }
 
+.post-date {
+	font-family: 'Fira Code';
+}
+
 .post-navigation {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 	gap: 1rem;
-	
 }
 
 .post-navigation > * {
@@ -200,8 +212,57 @@ code {
 	font-family: 'Fira Code';
 }
 
-span {
+.img-icon {
 	display: inline-block;
 	height: 48px;
 	width: 48px;
+}
+
+.read-more {
+	padding-top: 2rem !important;
+	color: #ebcb8b;
+}
+
+.read-more svg {
+	margin-left: 0.5rem;
+}
+
+@media screen and (min-width: 550px) {
+	.header, .index-wrap {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	h1 {
+		font-size: 1.5rem !important;
+	}
+
+	h2 {
+		font-size: 1.2rem !important;
+	}
+
+	h3 {
+		font-size: 1rem !important;
+	}
+
+	body {
+		font-size: 1rem;
+	}
+
+	.blogpost-wrap {
+		max-width: 40ch;
+	}
+
+	.post-navigation {
+		flex-direction: column;
+	}
+
+	.post-navigation > * {
+		min-width: 180px;
+	}
+
+	.post-card {
+		width: 100%;
+	}
 }
