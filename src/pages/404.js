@@ -1,13 +1,17 @@
 import React from "react"
 import {Link} from 'gatsby'
+import {Helmet} from 'react-helmet'
 
 import Layout from "../components/layout"
 
 const NotFoundPage = () => (
-  <Layout title="404 Not Found">
+  <Layout title="404 Not Found" headerStyle={{fontFamily: 'Fira Code'}}>
+		<Helmet>
+				<title>404 Not Found</title>
+			</Helmet>
 		<div className="about-wrap">
-			<h1 className="bold-h1" style={{color: '#FB9489'}}>404 Not Found?!</h1>
-			<Link to="/">Back to safety</Link>
+			<h1 className="notfound">404 Not Found <span>🗿</span></h1>
+			<Link to="/" className="notfound-a">Back to the homepage</Link>
 			{/* <p>Where am I? Help!</p> */}
 		</div>
   </Layout>

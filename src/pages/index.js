@@ -7,8 +7,15 @@ export default function IndexPage({data}) {
 	return (
 		<Layout title="Home">
 			<div className="index-wrap">
-				<h1 className="bold-h1">OrangeBurrito's Blog</h1>
-
+				<div className="main-sidebar">
+					<h1>OrangeBurrito's Blog</h1>
+					{/* <p>Come read the writings! It's less boring than your standard he/him software developer blog, I swear! It's even got pictures!</p> */}
+					<p>See the writing on the blog</p>
+					<p>We have fortune cookies! 🥠</p>
+					<p style={{fontFamily: 'Fira Code', fontSize: '1.1rem'}}>Updates every Friday</p>
+					<img class="arrow-img"src="./arrow.png"/>
+					<img class="main-img" src="./vr_madness.png"></img>
+				</div>
 				<div className="posts-aside">
 				{data.allMdx.nodes.map(({id, excerpt, frontmatter, fields }) => (
 					<Link to={fields.slug} className="post-card box">
@@ -35,7 +42,7 @@ query SITE_INDEX_QUERY {
   allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
     nodes {
       id
-      excerpt(pruneLength: 100)
+      excerpt(pruneLength: 85)
       frontmatter {
         title
         date(formatString: "Do MMMM YYYY")

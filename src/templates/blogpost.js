@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import {Helmet} from 'react-helmet'
 
 import Layout from '../components/layout'
 
@@ -10,7 +11,9 @@ query PostBySlug($slug: String!) {
 		body
     frontmatter {
       title
-      date(formatString: "MMMM Do YYYY")
+			date(formatString: "MMMM Do YYYY")
+			cover
+			coverAlt
     }
   }
 }
@@ -22,6 +25,9 @@ export default ({ data, pageContext }) => {
 	return (
 		
 		<Layout title='Blog' headerStyle={{fontFamily: 'Special Elite', paddingTop: '10px'}} footerStyle={{display: 'none'}} wrapStyle={{gridTemplateRows: '12% calc(88% - 0.6rem)'}}>
+			<Helmet>
+          <title>{frontmatter.title}</title>
+        </Helmet>
 			<div className="blogpost-wrap" id="key">
 				<div className="blogpost-header">
 					<div className="blogpost-title">
@@ -51,6 +57,8 @@ export default ({ data, pageContext }) => {
 					)}
 					</div>
 				</div>
+				<img className="post-image-banner" src={frontmatter.cover} alt={frontmatter.coverAlt}></img>
+				<p className="photo-caption">{frontmatter.coverAlt}</p>
 
 				<MDXRenderer>{body}</MDXRenderer>
 			</div>

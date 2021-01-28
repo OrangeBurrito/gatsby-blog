@@ -1,10 +1,16 @@
 import React from 'react'
+import {Helmet} from 'react-helmet'
 
 import Header from '../components/header'
 
 export default function Layout(props) {
 	return (
 		<div className="wrap">
+			<Helmet>
+          <meta charSet="utf-8" name="keywords" content="Blogposts, Minecraft, Miscellaneous"/>
+          <title>OrangeBurrito's Blog</title>
+					<html lang="en-US"></html>
+        </Helmet>
 			<Header headerText={props.title} headerStyle={props.headerStyle}/>
 			<main>{props.children}</main>
 			<footer className="box" style={props.footerStyle}>Copyright © OrangeBurrito {new Date().getFullYear()}</footer>

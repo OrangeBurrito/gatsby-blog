@@ -5,43 +5,11 @@ module.exports = {
 		author: `OrangeBurrito`,
 	},
 	plugins: [
-		`gatsby-transformer-sharp`,
-		`gatsby-plugin-sharp`,
-		{
-			resolve: `gatsby-transformer-remark`,
-			options: {
-				plugins: [
-				{
-					resolve: "gatsby-remark-external-links",
-					options: {
-						target: "_self",
-						rel: "nofollow"
-					}
-				}
-				]
-			}
-		},
 		{
 			resolve: `gatsby-plugin-mdx`,
 			options: {
 				extensions: [`.mdx`, `.md`],
-				gatsbyRemarkPlugins: [
-					{
-						resolve: `gatsby-remark-images`,
-						options: {
-							maxWidth: 590,
-						},
-					},
-				],
-				plugins: [
-					{
-						resolve: `gatsby-remark-images`,
-						options: {
-							maxWidth: 590,
-						},
-					},
-				],
-			},
+			}
 		},
 		{
 			resolve: `gatsby-source-filesystem`,
