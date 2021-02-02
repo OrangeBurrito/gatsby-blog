@@ -139,7 +139,9 @@ a {
 
 .post-card img {
 	width: 100%;
-	height: auto;
+	height: 220px;
+	object-fit: cover;
+	object-position: center;
 }
 
 .post-card p, .post-card h1 {
@@ -229,6 +231,7 @@ a {
 }
 
 pre {
+	overflow: auto;
 	background-color: var(--wrap-bg);
 	color: var(--darker-text);
 	padding: 1rem;
@@ -242,9 +245,10 @@ code {
 
 .img-icon {
 	display: inline-block;
-	height: 30px;
-	width: 30px;
+	width: 32px;
+	height: 32px;
 	background-size: contain;
+	background-repeat: no-repeat;
 	vertical-align: text-top;
 }
 
@@ -286,7 +290,7 @@ code {
   image-rendering: -webkit-optimize-contrast;
 	-ms-interpolation-mode: nearest-neighbor;
 	margin-top: -1rem;
-	margin-bottom: 3rem;
+	margin-bottom: 4rem;
 }
 
 .purple-link {
@@ -316,7 +320,39 @@ code {
 	color: var(--link-hover);
 	font-weight: bold;
 	border-bottom: 2px solid var(--link-hover);
-	
+}
+
+.hover-span {
+	position: relative;
+	flex-direction: column;
+	color: var(--link-hover);
+}
+
+.hover-image {
+	max-width: 150px;
+  height: auto;
+  position: absolute;
+  display: none;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0px);
+}
+
+.hover-span:hover {
+	cursor: pointer;
+}
+
+.hover-span:hover .hover-image, .hover-span:active .hover-image {
+	display: inline-block;
+}
+
+.hover-image-large {
+	max-width: 300px;
+}
+
+.blogpost-wrap p:nth-of-type(2)::first-letter {
+	font-family: 'PT Serif';
+	font-size: 1.5rem;
 }
 
 @media screen and (min-width: 550px) {
@@ -393,5 +429,9 @@ code {
 
 	.main-img {
 		width: 50px;
+	}
+
+	.hover-image-large {
+		width: 400px;
 	}
 }
