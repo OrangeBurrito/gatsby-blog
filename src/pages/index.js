@@ -10,11 +10,10 @@ export default function IndexPage({data}) {
 				<div className="main-sidebar">
 					<h1>OrangeBurrito's Blog</h1>
 					{/* <p>Come read the writings! It's less boring than your standard he/him software developer blog, I swear! It's even got pictures!</p> */}
-					<p>See the writing on the blog</p>
-					<p>We have fortune cookies! 🥠</p>
-					<p style={{fontFamily: 'Fira Code', fontSize: '1.1rem'}}>Updates every Friday</p>
-					<img class="arrow-img"src="./arrow.png"/>
-					<img class="main-img" src="./vr_madness.png"></img>
+					<p>See the writing on the blog<br/>We have fortune cookies! 🥠</p>
+					<p style={{fontFamily: 'Fira Code', fontSize: '1.2rem'}}>Updates every Friday</p>
+					<img src="./arrow.png"/>
+					<img src="./vr_madness.png"></img>
 				</div>
 				<div className="posts-aside">
 				{data.allMdx.nodes.map(({id, excerpt, frontmatter, fields }) => (

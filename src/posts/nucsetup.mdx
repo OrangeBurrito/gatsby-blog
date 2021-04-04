@@ -1,0 +1,106 @@
+---
+title: 'Setting up an Infidel NUC'
+date: 2021-03-30
+cover: 'https://i.ytimg.com/vi/6wkrZpy5sns/maxresdefault.jpg'
+coverAlt: 'A standard Mini PC'
+---
+
+import React from 'react'
+import HoverImage from '../components/imageOnHover.js'
+
+When I was hosting my Minecraft Server on an pay-per-month VM, I was faced with shelling over a 
+non-unsubstantial sum of money each month for eight gigs of RAM. For most peons and commonfolk who
+play on the default version of the game, that's enough for twenty players. (provided someone doesn't tank 
+the server with their chicken farm that's a billion members strong) But for the enlightened intellectuals
+that indulge in the wild west of modded minecraft (especially heavily modded, I'm talking 150 mods upwards),
+it leaves the host machine begging for spare RAM.
+
+<img src="https://i.pinimg.com/originals/86/24/62/862462a53635baffcb7b1a37e6b215ec.png"/>
+<p className="photo-caption">The TPS Plummeter 9000</p>
+
+With my wallet taking a monthly beating and the server players facing frequent crashes and lag spikes, I knew
+it was time for a better investment.  Goodbye, DigitalOcean, and hello home server!
+
+**NOTE:** If you're here for a recommendation by a "professional", good luck finding one here. I make no claim of expertise,
+just personal experience.
+
+## But Which PC is the right one?
+My main requirements for a PC were:
+- It has to be fun-sized
+- It must be as silent as a bacterium
+<!-- - It shouldn't <HoverImage src="https://techcrunch.com/wp-content/uploads/2020/11/M1-Mac-Mini-7.jpg?">break the bank</HoverImage> -->
+- It shouldn't <HoverImage src="https://techcrunch.com/wp-content/uploads/2020/11/M1-Mac-Mini-7.jpg?">plunge me into impecuniousness</HoverImage>
+- Ready to Use? get that out of my keratinocytes!
+
+- It requires <a href="https://www.youtube.com/watch?v=PgowBLb4sKw" target="_blank">customizability</a> (Gib RAM pls ༼ つ ◕_◕ ༽つ)
+With these specific parameters, I could start excluding potential candidates.
+
+Raspberry PIs aren't known for being the powerhouses of mini PCs, and aren't upgradable.
+It's a shame, but I prefer cherry pies 🥧
+
+The Mac Mini got decent reviews, but as with all of Apple's products, it will put a painful dent in your bank balance, and come with
+a disappointing number of ports.
+
+Pushing the size of PCs to the absolute limit, PC Sticks are the smallest ones on the market.  Unfortunately, with less size comes
+less power.
+
+After some research,
+I settled on an Infidel NUC, which is pronounced a certain way but I won't tell you which.
+According to the manufacturer's website itself and the numerous tech review sites, it's the most compact Mini PC that doesn't sacrifice performance.
+It also "is a small form factor PC with a tiny footprint". I assume this is what it means:
+
+<img src=""/>
+<p className="photo-caption">PC footprints</p>
+
+The pros of picking your own parts is that you get to choose The Good Stuff™. 
+
+I'm aware Infidel isn't faring very well in the Worldwide Transistor-Shrinkage Competition at the moment, but if random people on
+the internet say this PC is good, it must be gospel!
+The hardest part of this whole thing is the choosing.  For unknown reasons, someone up the corporate ladder at Infidel
+decided to push out as many slightly different but ultimately very similar products, all with different product names that read
+like randomly generated passwords.
+
+With exemplary skills of deduction (by means of searching for Infidel NUCs on Amazon and picking the cheapest model), I deciphered
+the optimal PC for my needs. 
+
+I of course ordered the kit, as the rules dictate it must be so.
+But with this you have to order the RAM and SSD separately.  If you're uncertain what to do here, you can read the specs on <a href="https://ark.intel.com/content/www/us/en/ark.html#@Intel%C2%AENUC" target="_blank">the website.</a> 
+
+## Setting it up
+After I unscrewed the back to reveal the PC's inner workings and popped in the RAM and SSD, I plugged in all the necessary
+bits and bobs including the ethernet cable and bootable thumb drive with Ubuntu Server on it.
+
+I used a nifty program called <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a> to turn my boring old thumb drive into a bootable one.
+
+<img src="https://a.uguu.se/EBcArqvJ.jpg" style="height: 400px; width: auto"/>
+<p className="photo-caption">Tux the Penguin</p>
+
+Lugging an old monitor and a dusty keyboard over, I was soon faced with issues regarding the monitor.  The NUC
+doesn't come pre-installed with various drivers, so the USB-C cable I was using for my Mac to connect to the monitor didn't work very well.
+I fetched a HDMI cable instead, and things were swell.
+For the keyboard, the USB-A dongle worked fine plugged directly into the NUC.
+
+With everything plugged in and working and ready to go, I turned on the monitor and began the setup process.
+I was presented with the Infidel NUC logo, then the rather barebones setup screen.
+Selecting BIOS Settings revealed more advanced NUC settings ranging from fan speed to boot options.
+
+The setup process is relatively straightforward after selecting Install The Certain Operating System.
+A waterfall of logs spews over your screen for a while, and you go through keyboard language selection.
+I created the default user account and set the name for the NUC, which obviously had to be WALNUC.
+
+<img src="https://www.lumberjocks.com/assets/pictures/projects/125285.jpg"/>
+<p className="photo-caption">It's not a NUC buuut... 🥜</p>
+
+To enable a wireless WiFi connection, I used nmcli, but I had to already be connected to the router
+on setup beforehand to install the package (it doesn't come preinstalled with Ubuntu 20.04)
+
+With it basically working I added my public SSH key to the server and SSH'd into it.
+
+## Running the Block Game
+
+<img src="https://cdn.shopify.com/s/files/1/0580/2885/products/mountainvillagelogo2_1200x1200.jpg?v=1598428572"/>
+<p className="photo-caption">Insert epic server name here</p>
+
+This method is similar to how I used to do it on DigitalOcean, but with a few more steps for port
+forwarding.
+
