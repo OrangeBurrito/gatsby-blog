@@ -215,11 +215,11 @@ a {
 	border-radius: 5px;
 }
 
-.blogpost-wrap a {
+.blogpost-wrap a, .about-wrap a {
 	color: #8fbcbb;
 }
 
-.blogpost-wrap a:hover {
+.blogpost-wrap a:hover, .about-wrap a:hover {
 	border-bottom: 2px solid var(--link-hover);
 }
 
@@ -234,8 +234,9 @@ a {
 .post-title {
 	font-family: 'PT Serif';
 	font-weight: 700;
-	font-size: 3.4rem;
+	font-size: 3.2rem;
 	margin-bottom: -0.5rem;
+	line-height: 1.5;
 }
 
 .post-date {
@@ -252,6 +253,8 @@ a {
 .post-navigation > * {
 	padding: 0.5rem 1rem;
 	color: var(--darker-text);
+	min-width: 200px;
+	line-height: 1.2;
 }
 
 .post-navigation > *:hover {
@@ -352,7 +355,7 @@ code {
 }
 
 .hover-image {
-	max-width: 200px;
+	max-width: 300px;
   height: auto;
   position: absolute;
   display: none !important;

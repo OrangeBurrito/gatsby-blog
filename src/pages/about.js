@@ -12,7 +12,7 @@ export default function About() {
 			</Helmet>
 			<div className="about-wrap">
 				<h2>Blog Creator</h2>
-				<a href='https://github.com/OrangeBurrito' style={{fontSize: '2rem'}}>OrangeBurrito</a>
+				<a href='https://github.com/OrangeBurrito' style={{fontSize: '2rem'}} target="_blank">OrangeBurrito</a>
 				{/* <p>In the fierce and ongoing debate concerning whales, I myself prefer <HoverImage src="https://cosmosmagazine.com/wp-content/uploads/2019/12/080217_whalehearing_1.jpg">baleen</HoverImage> to blue.</p> */}
 			</div>
       

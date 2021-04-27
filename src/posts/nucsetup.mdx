@@ -1,7 +1,7 @@
 ---
 title: 'Setting up an Infidel NUC'
-date: 2021-03-30
-cover: 'https://i.ytimg.com/vi/6wkrZpy5sns/maxresdefault.jpg'
+date: 2021-04-27
+cover: 'https://laughingsquid.com/wp-content/uploads/2014/05/13945820897_090ac2148a_z-640x640.jpg'
 coverAlt: 'A standard Mini PC'
 ---
 
@@ -21,15 +21,14 @@ it leaves the host machine begging for spare RAM.
 With my wallet taking a monthly beating and the server players facing frequent crashes and lag spikes, I knew
 it was time for a better investment.  Goodbye, DigitalOcean, and hello home server!
 
-**NOTE:** If you're here for a recommendation by a "professional", good luck finding one here. I make no claim of expertise,
-just personal experience.
+**NOTE:** This is a documentation of my setup of an Infidel NUC, not a recommendation.
 
 ## But Which PC is the right one?
 My main requirements for a PC were:
 - It has to be fun-sized
 - It must be as silent as a bacterium
 <!-- - It shouldn't <HoverImage src="https://techcrunch.com/wp-content/uploads/2020/11/M1-Mac-Mini-7.jpg?">break the bank</HoverImage> -->
-- It shouldn't <HoverImage src="https://techcrunch.com/wp-content/uploads/2020/11/M1-Mac-Mini-7.jpg?">plunge me into impecuniousness</HoverImage>
+- It shouldn't <HoverImage src="https://techcrunch.com/wp-content/uploads/2020/11/M1-Mac-Mini-7.jpg?">be outrageously expensive</HoverImage>
 - Ready to Use? get that out of my keratinocytes!
 
 - It requires <a href="https://www.youtube.com/watch?v=PgowBLb4sKw" target="_blank">customizability</a> (Gib RAM pls ༼ つ ◕_◕ ༽つ)
@@ -38,11 +37,14 @@ With these specific parameters, I could start excluding potential candidates.
 Raspberry PIs aren't known for being the powerhouses of mini PCs, and aren't upgradable.
 It's a shame, but I prefer cherry pies 🥧
 
-The Mac Mini got decent reviews, but as with all of Apple's products, it will put a painful dent in your bank balance, and come with
-a disappointing number of ports.
+The Mac Mini got decent reviews, but if you don't absolutely need OSX on your mini PC, then
+cheaper options are abound.
 
 Pushing the size of PCs to the absolute limit, PC Sticks are the smallest ones on the market.  Unfortunately, with less size comes
 less power.
+
+<img src="https://www.extremeit.com/wp-content/uploads/2020/12/IMG_0682-980x641.jpg"/>
+<p className="photo-caption">Imagine a PC as small as a thumb drive;  Now imagine no more, it's here!</p>
 
 After some research,
 I settled on an Infidel NUC, which is pronounced a certain way but I won't tell you which.
@@ -72,8 +74,8 @@ bits and bobs including the ethernet cable and bootable thumb drive with Ubuntu 
 
 I used a nifty program called <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a> to turn my boring old thumb drive into a bootable one.
 
-<img src="https://a.uguu.se/EBcArqvJ.jpg" style="height: 400px; width: auto"/>
-<p className="photo-caption">Tux the Penguin</p>
+<img src="https://i.imgur.com/ZgcrUF1.jpg" style="height: 400px; width: auto"/>
+<p className="photo-caption">Linux's Iconic Mascot, Tux The Penguin</p>
 
 Lugging an old monitor and a dusty keyboard over, I was soon faced with issues regarding the monitor.  The NUC
 doesn't come pre-installed with various drivers, so the USB-C cable I was using for my Mac to connect to the monitor didn't work very well.
@@ -91,8 +93,8 @@ I created the default user account and set the name for the NUC, which obviously
 <img src="https://www.lumberjocks.com/assets/pictures/projects/125285.jpg"/>
 <p className="photo-caption">It's not a NUC buuut... 🥜</p>
 
-To enable a wireless WiFi connection, I used nmcli, but I had to already be connected to the router
-on setup beforehand to install the package (it doesn't come preinstalled with Ubuntu 20.04)
+To enable a wireless WiFi connection, I installed nmcli while connected to the router via the ethernet
+cable (it doesn't come preinstalled with Ubuntu 20.04).
 
 With it basically working I added my public SSH key to the server and SSH'd into it.
 
@@ -101,6 +103,22 @@ With it basically working I added my public SSH key to the server and SSH'd into
 <img src="https://cdn.shopify.com/s/files/1/0580/2885/products/mountainvillagelogo2_1200x1200.jpg?v=1598428572"/>
 <p className="photo-caption">Insert epic server name here</p>
 
-This method is similar to how I used to do it on DigitalOcean, but with a few more steps for port
-forwarding.
+This method is similar to how I used to do it on DigitalOcean, but with a few more steps.
+
+The first is port forwarding.  If you want external devices (aka people not connected to your wiffy)
+to be able to access the server, you have to map an external port to the server's IP address and port.
+
+The public  IP address then becomes your router's IP address plus the specific port.   Paste this into
+your domain name registrar's A record address and you're done (if there's the option and you're impatient, set the TTL to the minimum amount of time before the new address propagates)
+
+<img src="https://cdn.gamer-network.net/2019/articles/2019-04-29-11-31/nothing-can-stop-minecraft-villagers-from-invading-player-beds-1556533878251.jpg/EG11/thumbnail/1920x1070/format/jpg/quality/80"/>
+<p className="photo-caption">Readers getting through this bore-fest</p>
+
+Second, DDNS.  Is your ISP charging outrageous prices for a fixed IP? Just use DDNS and you'll
+be scamming *them* instead!
+It's a client connected to your router that updates DNS entries on your domain name registrar
+automatically, no hassle required. (make sure the client is actually running first)
+ I used <a href="https://github.com/ddclient/ddclient" target="_blank">DDClient</a>.  
+
+For the commands and actual notes, I have some notes about this <a href="https://hackmd.io/XkC36eSQQMmgcZ2TGE8r9g" target="_blank">here</a>.
 
