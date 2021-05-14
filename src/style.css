@@ -461,7 +461,7 @@ blockquote::after {
 	}
 
 	.post-navigation {
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: center;
 	}
 
@@ -481,19 +481,19 @@ blockquote::after {
 		display: none;
 	}
 
-	.photo-caption {
-		display: none;
-	}
-
 	.arrow-img {
 		display: none;
 	}
 
 	.main-img {
-		width: 50px;
+		display: none;
 	}
 
 	.hover-image-large {
-		width: 400px;
+		width: 500px;
+	}
+
+	.blogpost-wrap > p {
+		padding-bottom: 1.5rem;
 	}
 }
