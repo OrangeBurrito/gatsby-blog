@@ -1,0 +1,35 @@
+{
+  "name": "blog3.0",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blog3.0",
+  "author": "OrangeBurrito",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "gatsby": "^3.5.0",
+    "gatsby-plugin-image": "^1.5.0",
+    "gatsby-plugin-mdx": "^2.5.0",
+    "gatsby-plugin-sharp": "^3.5.0",
+    "gatsby-remark-images": "^5.2.0",
+    "gatsby-remark-relative-images": "^2.0.2",
+    "gatsby-source-filesystem": "^3.5.0",
+    "gatsby-transformer-remark": "^4.2.0",
+    "gatsby-transformer-sharp": "^3.5.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
